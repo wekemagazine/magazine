@@ -1,21 +1,26 @@
 export function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-6">
-      <div className="container mx-auto px-4 text-center">
-        <div className="mb-4">
-          <a href="tel:+5521972231553" className="text-yellow-400 hover:text-yellow-300 mx-2">
-            Contato: +55 21 97223-1553
-          </a>
-          <span className="mx-2 text-gray-400">|</span>
-          <a href="#" className="text-gray-300 hover:text-white mx-2">
-            Política de Privacidade
-          </a>
-          <span className="mx-2 text-gray-400">|</span>
-          <a href="#" className="text-gray-300 hover:text-white mx-2">
-            Termos de Uso
-          </a>
+    <footer className="bg-gray-800 text-white py-10 text-center">
+      <div className="container mx-auto px-5">
+        <div className="max-w-4xl mx-auto">
+          <p className="mb-5 text-sm opacity-80">
+            Este site recebe comissão por compras através dos links acima. Os preços e disponibilidade dos produtos
+            estão sujeitos a alterações.
+          </p>
+
+          <div className="mb-5">
+            <a href="#" className="text-white mx-3 opacity-80 hover:opacity-100 transition-opacity">
+              Política de Privacidade
+            </a>
+            <a href="#" className="text-white mx-3 opacity-80 hover:opacity-100 transition-opacity">
+              Termos de Uso
+            </a>
+            <a href="tel:+5521972231553" className="text-white mx-3 opacity-80 hover:opacity-100 transition-opacity">
+              Contato
+            </a>
+          </div>
+          <p className="text-sm opacity-60">© 2025 MelhoresOfertas. Todos os direitos reservados.</p>
         </div>
-        <p className="text-sm text-gray-400">© 2025 MelhoresOfertas. Todos os direitos reservados.</p>
       </div>
     </footer>
   )

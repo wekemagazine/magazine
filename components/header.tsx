@@ -1,40 +1,20 @@
-import Link from "next/link"
-import { ShoppingCart } from "lucide-react"
+import { ShoppingCart, Calendar } from "lucide-react"
 
 export function Header() {
-  const categories = [
-    { name: "Games", path: "/games" },
-    { name: "Eletrodomésticos", path: "/eletrodomesticos" },
-    { name: "Ferramentas", path: "/ferramentas" },
-    { name: "Celulares", path: "/celulares" },
-    { name: "Informática", path: "/informatica" },
-    { name: "Moda", path: "/moda" },
-  ]
-
   return (
-    <header className="bg-yellow-400 shadow-md">
-      <nav className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+    <header className="bg-yellow-400 py-5 shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-5 flex justify-between items-center">
+        <a href="#" className="flex items-center text-gray-800 text-2xl font-bold no-underline">
+          <ShoppingCart className="mr-3 text-blue-500" size={28} />
+          <span>MelhoresOfertas</span>
+        </a>
         <div className="flex items-center">
-          <Link href="/" className="text-xl font-bold text-gray-800 mr-6 flex items-center">
-            <ShoppingCart className="mr-2 text-blue-500" size={24} />
-            MelhoresOfertas
-          </Link>
+          <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
+            <Calendar className="mr-2" size={16} />
+            <span>28/05/2025</span>
+          </div>
         </div>
-        <ul className="flex flex-wrap space-x-4">
-          <li>
-            <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium">
-              Início
-            </Link>
-          </li>
-          {categories.map((category) => (
-            <li key={category.path}>
-              <Link href={category.path} className="text-gray-700 hover:text-blue-600 font-medium">
-                {category.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      </div>
     </header>
   )
 }

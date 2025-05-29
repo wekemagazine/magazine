@@ -6,19 +6,31 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
+import { trackNewsletterSignup } from "@/lib/analytics"
 
 export function Newsletter() {
   const [email, setEmail] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const { toast } = useToast()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (email) {
+      setIsLoading(true)
+
+      // Simular delay de envio
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // Rastrear evento de cadastro
+      trackNewsletterSignup(email)
+
       toast({
         title: "Cadastro realizado!",
-        description: `E-mail ${email} cadastrado com sucesso!`,
+        description: `E-mail ${email} cadastrado com sucesso! Você receberá nossas ofertas em breve.`,
       })
+
       setEmail("")
+      setIsLoading(false)
     }
   }
 
@@ -37,9 +49,10 @@ export function Newsletter() {
             onChange={(e) => setEmail(e.target.value)}
             required
             className="rounded-r-none"
+            disabled={isLoading}
           />
-          <Button type="submit" className="bg-blue-500 hover:bg-blue-600 rounded-l-none">
-            Cadastrar
+          <Button type="submit" className="bg-blue-500 hover:bg-blue-600 rounded-l-none" disabled={isLoading}>
+            {isLoading ? "Cadastrando..." : "Cadastrar"}
           </Button>
         </form>
       </div>
