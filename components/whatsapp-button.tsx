@@ -1,15 +1,23 @@
+"use client"
+
 import { MessageCircle } from "lucide-react"
+import { trackWhatsAppClick } from "@/lib/analytics"
 
 export function WhatsAppButton() {
-  const phoneNumber = "5521972231553" // Número sem símbolos
+  const phoneNumber = "5521972231553"
   const message = "Olá! Vi seus produtos no site e gostaria de mais informações sobre as ofertas."
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+
+  const handleWhatsAppClick = () => {
+    trackWhatsAppClick()
+  }
 
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleWhatsAppClick}
       className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50 group"
       aria-label="Contato via WhatsApp"
     >

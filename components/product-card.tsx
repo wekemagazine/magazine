@@ -1,7 +1,10 @@
+"use client"
+
 import { Star, StarHalf, Truck } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { trackProductClick } from "@/lib/analytics"
 import type { Product } from "@/lib/types"
 
 interface ProductCardProps {
@@ -24,6 +27,10 @@ export function ProductCard({ product, rank }: ProductCardProps) {
     }
 
     return stars
+  }
+
+  const handleProductClick = () => {
+    trackProductClick(product.title, product.category, product.currentPrice)
   }
 
   return (
@@ -70,7 +77,7 @@ export function ProductCard({ product, rank }: ProductCardProps) {
         </div>
 
         <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white" asChild>
-          <a href={product.link} target="_blank" rel="noopener noreferrer">
+          <a href={product.link} target="_blank" rel="noopener noreferrer" onClick={handleProductClick}>
             Ver Oferta
           </a>
         </Button>
