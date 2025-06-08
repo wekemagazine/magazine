@@ -6,6 +6,19 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Toaster } from "@/components/ui/toaster"
 import "./globals.css"
 import { Suspense } from "react"
+import { GoogleTagManager } from '@next/third-parties/google';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <GoogleTagManager gtmId="GTM-KM6P7TJN" />
+      <Component {...pageProps} />
+    </>
+  );
+}
+
+export default MyApp;
+
 
 const inter = Inter({ subsets: ["latin"] })
 
