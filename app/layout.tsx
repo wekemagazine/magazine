@@ -19,7 +19,6 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp;
 
-
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
